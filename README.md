@@ -27,8 +27,7 @@
 docker run -d --name complaints-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_DB=complaints -p 5432:5432 -v complaints-pgdata:/var/lib/postgresql/data postgres:16-alpine
 
-# پکیج‌ها (توی Python اصلی)
-py -3.11 -m pip install langgraph langgraph-checkpoint-postgres "psycopg[binary]" openai python-dotenv gradio numpy
+ pip install langgraph langgraph-checkpoint-postgres "psycopg[binary]" openai python-dotenv gradio numpy
 ```
 
 فایل `.env`:
@@ -40,9 +39,9 @@ POSTGRES_URI=postgresql://postgres:postgres@localhost:5432/complaints
 ```
 
 ```bash
-py -3.11 app.py              # رابط وب: http://127.0.0.1:7860  (پنل اپراتور: /operator)
-py -3.11 test_solution.py    # تست‌ها (بدون نیاز به API و Postgres)
-py -3.11 solution.py --complaint "سفارش ۳ من کجاست؟" --username mohammad --password mohammad-1234
+ app.py              # رابط وب: http://127.0.0.1:7860  (پنل اپراتور: /operator)
+ test_solution.py    # تست‌ها (بدون نیاز به API و Postgres)
+ solution.py --complaint "سفارش ۳ من کجاست؟" --username mohammad --password mohammad-1234
 ```
 
 دیتابیس فروشگاه (`shop.db` که SQLite هست) توی اولین اجرا خودکار ساخته می‌شه و با دیتای نمونه پر می‌شه اگه خواستی برگردی به دیتای اولیه کافیه همین فایل رو پاک کنی
